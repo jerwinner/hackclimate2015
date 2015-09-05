@@ -3,8 +3,8 @@
         <title></title>
     </head>
     <body>
-        <?php echo form_open("controller/add_post"); ?>
-            <textarea rows="4" cols="50" name=""text"></textarea><br/>
+        <?php echo form_open("posts/add_post"); ?>
+            <textarea rows="4" cols="50" name="texts"></textarea><br/>
 
             <select class="select" name="category">
                 <option value="">Choose Category</option>

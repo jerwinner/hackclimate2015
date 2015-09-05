@@ -35,10 +35,10 @@ class Posts extends MY_Controller{
             "user_id" => $this->get_user_id(),
             "category_id" => $this->input->post("category"),
             "location_id" => $this->input->post("location"),
-            "text" => $this->input->post("text")
+            "text" => $this->input->post("texts")
         );
 
-        $this->model->insert_row("posts", $insert);
+        $this->model->insert_row($insert, "posts");
 
 //        redirect("controller");
     }
