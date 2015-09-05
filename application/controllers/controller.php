@@ -7,6 +7,7 @@ class Controller extends MY_Controller {
     }
 
 	public function index(){
+
     }
 
     public function login(){

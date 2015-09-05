@@ -6,16 +6,8 @@ class MY_Controller extends CI_Controller {
       parent::__construct();
     }
 
-	public function get_data(){
-        $post = $this->test(); // = $this->input->post("data");
-        $decrypt = decrypt($post, ENCRYPTION_KEY);
-        return json_decode($decrypt, TRUE);
-	}
-
-    function test(){
-        $post["uname"] = "Manrick.Capotolan";// = $this->input->post("data");
-        $post["passa"] = "manrick";
-        return encrypt(json_encode($post), ENCRYPTION_KEY);
-
+	public function get_user_id(){
+        return $this->session->userdata("user_id");
     }
+
 }
