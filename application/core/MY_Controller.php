@@ -3,7 +3,7 @@
 class MY_Controller extends CI_Controller {
 
     function __construct() {
-        parent::__construct();
+      parent::__construct();
         $data = array(
             'user_id' => 1
         );
