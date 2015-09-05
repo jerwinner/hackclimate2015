@@ -9,4 +9,13 @@ class Controller extends MY_Controller {
 	public function index(){
     }
 
+    public function login(){
+        $data = array(
+            'user_id' => 1
+        );
+
+        $this->session->set_userdata($data);
+    }
+
+
 }
