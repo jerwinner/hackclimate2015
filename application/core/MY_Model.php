@@ -2,33 +2,21 @@
 
 class MY_Model extends CI_Model{
 
-    function insert_row($data, $table){
-        return $this->db->insert($table, $data);
-    }
-
-    function delete_row($table, $filters = array()){
-        $this->db->where($filters)
-                 ->delete($table);
-    }
-
-    function update_row($data, $table, $filters = array()){
-        return $this->db->where($filters)
-            ->update($table, $data);
-    }
-
-	function get_last_id($id, $table, $filters = array()){
+	public function get_last_id($id, $table, $filters = array()){
 		$q = $this->db->select($id)
-					  ->order_by($id, "desc")
+					  ->order_by($id, DESCENDING)
 					  ->limit('1')
 					  ->get_where($table, $filters);
-        return $q->num_rows() == 0 ? 0 : $q->row()->$id;
+		if($q->num_rows() == 0)
+			return 0;
+		return $q->row()->$id;
 	}
 
-    function increment_last_id($id, $table, $filters = array()){
+    public function increment_last_id($id, $table, $filters = array()){
         return 1 + $this->get_last_id($id, $table, $filters);
     }
 
-	function get_count($table, $filters = array(), $like = '', $match = '', $like2 = '', $match2 = ''){
+	public function get_count($table, $filters = array(), $like = '', $match = '', $like2 = '', $match2 = ''){
 		if($like != '')
 			$this->db->like($like, $match);
 		if($like2 != '')
@@ -37,7 +25,19 @@ class MY_Model extends CI_Model{
 		return $query->num_rows();
 	}
 
+	public function update_row($data, $table, $filters = array()){
+		$this->db->where($filters)
+				 ->update($table, $data);
+	}
 
+	public function delete_row($table, $filters = array()){
+		$this->db->where($filters)
+				 ->delete($table);
+	}
+
+	public function insert_row($data, $table){
+		$this->db->insert($table, $data);
+	}
 
 	public function get_value($column, $table, $filters = array()){
 		$query = $this->db->select($column)
@@ -61,6 +61,14 @@ class MY_Model extends CI_Model{
 			$array[$row->$value] = $row->$text;
 		}
 		return $array;
+	}
+
+	public function get_user($user_id){
+		$q = $this->db->select("CONCAT(UserList.FirstName , ' ', UserList.LastName) AS Name", FALSE)
+										->from('UserList')
+										->where('UserID', $user_id)
+										->get()->row();
+		return $q->Name;
 	}
 
 	public function get_list($column, $table, $filters = array()){
@@ -87,14 +95,21 @@ class MY_Model extends CI_Model{
 		$query = $this->db->select($column)
                           ->get_where($table, $filters)
 						  ->num_rows();
-		return $query == 0 ? FALSE : TRUE ;
+		if($query == 0) {
+            return FALSE;
+        }
+		return TRUE;
 	}
 
-    public function has_row($table, $filters = array()){
-        $query = $this->db->get_where($table, $filters)
-                          ->num_rows();
-        return $query == 0 ? FALSE : TRUE ;
-    }
+	function csv($query){
+        $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $delimiter = ",";
+        $newline = "\r\n";
+        $data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+        force_download('CSV_Report.csv', $data);
+	}
 
 }
 	

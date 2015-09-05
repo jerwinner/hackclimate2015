@@ -6,4 +6,16 @@ class User extends MY_Controller{
         parent::__construct();
     }
 
+    function view_profile($uid){
+        $name = $this->model->get_value("name", "users", array("id" => $uid));
+
+        $data = array(
+            'name' => $name
+        );
+
+        $this->load->view('viewprofile', $data);
+    }
+
+
+
 }
