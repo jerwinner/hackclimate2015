@@ -1,3 +1,5 @@
+<input type="button" onclick="showDefaultModal('posts/load_view_add')" value="Add Post">
+
 <?php foreach($posts as $row):?>
     <div class="post">
         <h2><?php echo $row["name"];?></h2>

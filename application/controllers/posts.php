@@ -12,7 +12,9 @@ class Posts extends MY_Controller{
 
     function get_posts(){
         $data["posts"] = $this->model->get_posts();
+        $this->load->view("header");
         $this->load->view("posts/feed", $data);
+        $this->load->view("footer");
     }
 
     function filter_by_loc($id){

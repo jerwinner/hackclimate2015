@@ -9,6 +9,13 @@ class Controller extends MY_Controller {
 	public function index(){
         $this->load->view("page_home.php");
     }
+
+    function page_builder($data, $content){
+        $this->load->view("header", $data);
+        $this->load->view($content, $data);
+        $this->load->view("footer", $data);
+    }
+
     //page openers
     public function page_addpost(){
         $this->load->view("page_addpost.php");

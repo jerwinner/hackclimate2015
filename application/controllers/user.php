@@ -101,7 +101,7 @@ class User extends MY_Controller{
         redirect("user/view_coupons/" . $uid);
     }
 
-    function view_coupons($user_id){
+    function view_coupon($user_id){
         $data["coupons"] = $this->model->get_my_coupons($user_id);
         $this->load->view("coupons/mine", $data);
     }
@@ -113,7 +113,7 @@ class User extends MY_Controller{
 
     function insert_coupon(){
         $this->load->helper("keygen");
-        for($i = 10; $i<20; $i++){
+        for ($i = 10; $i < 20; $i++) {
             $data = array(
                 "company" => "HP",
                 "text" => "Free " . $i . " Tablets"
@@ -122,6 +122,16 @@ class User extends MY_Controller{
             print_r($data);
         }
         echo "complete";
+    }
+
+    function view_badge($uid){
+        $data["badges"] = $this->model->get_my_badges($uid);
+        $this->load->view("badges/mine", $data);
+    }
+
+    function view_all_badges(){
+        $data["badges"] = $this->model->get_badges();
+        $this->load->view("badges/all", $data);
     }
 
 }

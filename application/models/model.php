@@ -29,11 +29,21 @@ class Model extends MY_Model{
         return $ret;
     }
 
-    function get_badges($user_id){
-        $ret = $this->db->select("badges.*")
-                        ->join("user_badge", "user_badge.badge_id = badges.id")
-                        ->join("users", "users.id = user_badge.user_id")
-                        ->get_where("badges", array("user_id" => $user_id))
+    function get_badges(){
+        $ret = $this->db->select("badges.*,
+                                  categories.description as category")
+                        ->from("badges")
+                        ->join("categories", "categories.id = badges.category_id")
+                        ->get()->result_array();
+        return $ret;
+    }
+
+    function get_my_badges($uid){
+        $ret = $this->db->select("badges.*,
+                                  categories.description as category")
+                        ->join("badges", "badges.id = user_badge.badge_id")
+                        ->join("categories", "categories.id = badges.category_id")
+                        ->get_where("user_badge", array("user_id" => $uid))
                         ->result_array();
         return $ret;
     }
