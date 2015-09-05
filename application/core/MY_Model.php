@@ -48,19 +48,13 @@ class MY_Model extends CI_Model{
 		return $query->$column;
 	}
 
-	public function get_dropdown($value, $text, $table, $filters = array(), $option = true){
+	public function get_dropdown($value, $text, $table, $filters = array()){
 		$rows = $this->db->select($value . ', ' . $text)
-						 ->order_by($text, ASCENDING)
+						 ->order_by($text, "asc")
 						 ->get_where($table, $filters)
-						 ->result();
-		if ($option)
-			$array = array("" => "");
-		else
-			$array = array();
-		foreach($rows as $row){
-			$array[$row->$value] = $row->$text;
-		}
-		return $array;
+						 ->result_array();
+        return $rows;
+//        return count($rows) == 0 ? array() : $rows;
 	}
 
 	public function get_user($user_id){

@@ -1,5 +1,5 @@
 <?php echo form_open("posts/add_post"); ?>
-    <textarea rows="4" cols="50" name=""text"></textarea><br/>
+    <textarea rows="4" cols="50" name="content"></textarea><br/>
 
     <select class="select" placeholder="Category" name="category">
         <?php foreach($categories as $row):?>
@@ -9,7 +9,7 @@
 
     <select class="select" placeholder="Location" name="location">
         <?php foreach($locations as $row):?>
-            <option value="<?php echo $row["id"];?>"><?php echo $row["description"];?></option>
+            <option value="<?php echo $row["id"];?>"><?php echo $row["descriptions"];?></option>
         <?php endforeach;?>
     </select>
      <br/>
