@@ -6,14 +6,6 @@ class User extends MY_Controller{
         parent::__construct();
     }
 
-    function add_score(){
-
-    }
-
-    function subtract_score(){
-
-    }
-
     function log_in(){
 
     }
@@ -27,10 +19,6 @@ class User extends MY_Controller{
         foreach ($badges as $key => $value) {
             $this->load->view('users/viewbadge', $value);
         }
-    }
-
-    function view_coupons(){
-
     }
 
     function view_profile($uid){
@@ -121,10 +109,6 @@ class User extends MY_Controller{
     function view_all_coupons(){
         $data["coupons"] = $this->model->get_coupons();
         $this->load->view("coupons/all", $data);
-    }
-
-    function view_badges($user_id){
-
     }
 
     function insert_coupon(){
