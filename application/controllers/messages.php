@@ -2,4 +2,12 @@
 
 class Messages extends MY_Controller{
 
+    function message_user(){
+
+    }
+
+    function get_messages($id){
+
+    }
+
 }
