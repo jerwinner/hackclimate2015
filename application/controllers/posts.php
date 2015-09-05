@@ -12,7 +12,7 @@ class Posts extends MY_Controller{
 
     function get_posts(){
         $data["posts"] = $this->model->get_posts();
-
+        $this->load->view("feed", $data);
     }
 
     function filter_by_loc(){
@@ -35,10 +35,10 @@ class Posts extends MY_Controller{
             "user_id" => $this->get_user_id(),
             "category_id" => $this->input->post("category"),
             "location_id" => $this->input->post("location"),
-            "text" => $this->input->post("text")
+            "text" => $this->input->post("texts")
         );
 
-        $this->model->insert_row("posts", $insert);
+        $this->model->insert_row($insert, "posts");
 
 //        redirect("controller");
     }
@@ -71,6 +71,7 @@ class Posts extends MY_Controller{
         );
         $this->model->update_row($score_update, "user_score", $user_filter);
 
+        $this->get_posts();
 //        redirect("controller");
     }
 
@@ -81,12 +82,13 @@ class Posts extends MY_Controller{
 
         //ADD UP SCORE OF THE POST
 
-        $prev_down = $this->model->get_value("ups", "posts", $post_filter);
+        $prev_down = $this->model->get_value("downs", "posts", $post_filter);
         $post_update = array(
             "downs" => $prev_down + 1
         );
         $this->model->update_row($post_update, "posts", $post_filter);
 
+        $this->get_posts();
 //        redirect("controller");
     }
 
