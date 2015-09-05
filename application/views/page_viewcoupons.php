@@ -4,7 +4,7 @@
     </head>
     <body>
         <ul>
-            <?php foreach($badge as $row):?>
+            <?php foreach($coupon as $row):?>
                 <li><?php echo $row["id"];?></li>
             <?php endforeach;?>
         </ul>
