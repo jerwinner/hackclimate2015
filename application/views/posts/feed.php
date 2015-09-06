@@ -54,4 +54,18 @@
     </div>
 <?php endforeach; ?>
 
+<script>
+        function add_up(id){
+            window.location.replace("<?php echo base_url();?>posts/add_up/"+id);
+        }
+
+        function add_down(id){
+            window.location.replace("<?php echo base_url();?>posts/add_down/"+id);
+        }
+
+        function filter(filt){
+            window.location.replace("<?php echo base_url();?>posts/filter_by_category/"+filt);
+        }
+</script>
+
 </div>
