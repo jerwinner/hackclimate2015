@@ -10,7 +10,7 @@
 
     <body>
         <div class="header">
-            <img src="<?php echo base_url();?>/images/white-logo.png" alt="logo" class="logo">
+            <a href="<?php echo base_url();?>/posts"><img src="<?php echo base_url();?>/images/white-logo.png" alt="logo" class="logo"></a>
             <input type="button" onclick="showDefaultModal('posts/load_view_add')" value="Add Post" class="btn btn-success add-post">
         </div>
 

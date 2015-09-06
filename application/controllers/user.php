@@ -94,14 +94,18 @@ class User extends MY_Controller{
         redirect("user/view_coupons/" . $uid);
     }
 
-    function view_coupon($user_id){
-        $data["coupons"] = $this->model->get_my_coupons($user_id);
+    function view_my_coupons(){
+        $data["coupons"] = $this->model->get_my_coupons($this->get_user_id());
+        $this->load->view("header", $data);
         $this->load->view("coupons/mine", $data);
+        $this->load->view("footer", $data);
     }
 
     function view_all_coupons(){
         $data["coupons"] = $this->model->get_coupons();
+        $this->load->view("header", $data);
         $this->load->view("coupons/all", $data);
+        $this->load->view("footer", $data);
     }
 
     function insert_coupon(){

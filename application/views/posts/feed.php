@@ -69,7 +69,8 @@
         </div>
     <?php endforeach;?>
     <input type="button" value="View All Badges" onclick="showLargeModal('user/view_all_badges')" class="btn btn-success profile-btn">
-    <input type="button" value="View Coupons" onclick="all_coupons()" class="btn btn-success profile-btn">
+    <input type="button" value="View All Coupons" onclick="all_coupons()" class="btn btn-success profile-btn">
+    <input type="button" value="View My Coupons" onclick="my_coupons()" class="btn btn-success profile-btn">
 </div>
 
 
@@ -86,5 +87,12 @@
         window.location.replace("<?php echo base_url();?>posts/filter_by_category/"+filt);
     }
 
+    function all_coupons(){
+        window.location.replace("<?php echo base_url();?>user/view_all_coupons/");
+    }
+
+    function my_coupons(){
+        window.location.replace("<?php echo base_url();?>user/view_my_coupons/");
+    }
 </script>
 
