@@ -55,3 +55,7 @@
 <?php endforeach; ?>
 
 </div>
+
+<div class="profile">
+    
+</div>
