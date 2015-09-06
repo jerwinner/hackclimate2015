@@ -10,28 +10,27 @@ class Posts extends MY_Controller{
         $this->get_posts();
     }
 
-    function get_posts(){
+    function load_page($data){
         $data["locations"] = $this->model->get_dropdown("id", "descriptions", "locations");
-        $data["posts"] = $this->model->get_posts();
-        $this->load->view("header");
+        $data["badges"] = $this->model->get_my_badges($this->get_user_id());
+        $this->load->view("header", $data);
         $this->load->view("posts/feed", $data);
         $this->load->view("footer");
+    }
+
+    function get_posts(){
+        $data["posts"] = $this->model->get_posts();
+        $this->load_page($data);
     }
 
     function filter_by_loc(){
-        $data["locations"] = $this->model->get_dropdown("id", "descriptions", "locations");
         $data["posts"] = $this->model->get_posts(array("location_id" => $this->input->post("location")));
-        $this->load->view("header");
-        $this->load->view("posts/feed", $data);
-        $this->load->view("footer");
+        $this->load_page($data);
     }
 
     function filter_by_category($id){
-        $data["locations"] = $this->model->get_dropdown("id", "descriptions", "locations");
         $data["posts"] = $this->model->get_posts(array("category_id" => $id));
-        $this->load->view("header");
-        $this->load->view("posts/feed", $data);
-        $this->load->view("footer");
+        $this->load_page($data);
     }
 
     function load_view_add(){
