@@ -7,7 +7,7 @@ class Posts extends MY_Controller{
     }
 
     function index(){
-        $this->load_view_add();
+        $this->get_posts();
     }
 
     function get_posts(){

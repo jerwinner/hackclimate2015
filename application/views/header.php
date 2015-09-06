@@ -10,8 +10,12 @@
 
     <body>
         <div class="header">
-            <h2 class="appName">ecoPatrol</h2>
-            <span class="userName">Test User</span>
+            <img src="<?php echo base_url();?>/images/white-logo.png" alt="logo" class="logo">
+            <input type="button" onclick="showDefaultModal('posts/load_view_add')" value="Add Post" class="btn btn-success add-post">
+        </div>
+
+        <div class="user-profile">
+
         </div>
 
         <!--Small Modal Template-->
