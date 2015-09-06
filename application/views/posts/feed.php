@@ -1,5 +1,17 @@
 <input type="button" onclick="showDefaultModal('posts/load_view_add')" value="Add Post">
 
+<img src="<?php echo base_url();?>/images/category/air_icon.png" style="cursor:pointer;" onclick="filter(4)">
+<img src="<?php echo base_url();?>/images/category/land_icon.png" style="cursor:pointer;" onclick="filter(1)">
+<img src="<?php echo base_url();?>/images/category/water_icon.png" style="cursor:pointer;" onclick="filter(3)">
+<img src="<?php echo base_url();?>/images/category/wildlife_icon.png" style="cursor:pointer;" onclick="filter(2)">
+
+<?php echo form_open("posts/filter_by_loc");?>
+Filter By Location:
+<?php echo form_dropdown("location", $locations, 0);?>
+<input type="submit" value="filter">
+<?php echo form_close();?>
+
+
 <?php foreach($posts as $row):?>
     <div class="post">
         <h2><?php echo $row["name"];?></h2>
@@ -18,5 +30,9 @@
 
     function add_down(id){
         window.location.replace("<?php echo base_url();?>posts/add_down/"+id);
+    }
+
+    function filter(filt){
+        window.location.replace("<?php echo base_url();?>posts/filter_by_category/"+filt);
     }
 </script>

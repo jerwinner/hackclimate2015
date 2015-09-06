@@ -2,6 +2,7 @@
     <head>
         <title>EcoPatrol</title>
         <link rel="stylesheet" href="<?php echo base_url();?>lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url();?>css/styles.css">
 
         <script src = "<?php echo base_url();?>JS/jquery.js"></script>
         <script src = "<?php echo base_url();?>lib/bootstrap/js/bootstrap.min.js"></script>
@@ -12,7 +13,7 @@
             <h2 class="appName">ecoPatrol</h2>
             <span class="userName">Test User</span>
         </div>
-s
+
         <!--Small Modal Template-->
         <div class="modal fade bs-example-modal-sm" id="modal_small" tabindex="-1" role="dialog" aria-labelledby="modal_smallLabel">
             <div class="modal-dialog modal-sm" role="document">

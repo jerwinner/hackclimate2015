@@ -52,9 +52,12 @@ class MY_Model extends CI_Model{
 		$rows = $this->db->select($value . ', ' . $text)
 						 ->order_by($text, "asc")
 						 ->get_where($table, $filters)
-						 ->result_array();
-        return $rows;
-//        return count($rows) == 0 ? array() : $rows;
+						 ->result();
+        $array = array();
+        foreach($rows as $row){
+            $array[$row->$value] = $row->$text;
+        }
+        return $array;
 	}
 
 	public function get_user($user_id){
