@@ -1,4 +1,3 @@
-
 <div class="filters">
     <h2>Filter by Category</h2>
     <hr>
@@ -19,28 +18,40 @@
 <div class="feeds">
 
     <?php foreach($posts as $row):?>
-        <div class="post">
+    <div class="post">
+        <div class="post-desc">
             <h2><?php echo $row["name"];?></h2>
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <?php echo $row["descriptions"];?><br>
             <p><?php echo $row["text"];?></p>
-            Location: <?php echo $row["descriptions"];?><br>
-            Category: <?php echo $row["description"];?>
-            <input type="button" onclick="add_up(<?php echo $row["id"];?>)" value="UP(<?php echo $row['ups'];?>)">
-            <input type="button" onclick="add_down(<?php echo $row["id"];?>)" value="DOWN(<?php echo $row['downs'];?>)">
         </div>
-    <?php endforeach;?>
+        <div class="post-btns">
+            <img src='<?php
+                switch($row["description"]){
+                    case "Water Pollution":
+                        echo base_url() . "/images/category/water_icon.png";
+                        break;
+                    case "Air Pollution":
+                        echo base_url() . "/images/category/air_icon.png";
+                        break;
+                    case "Waste Management":
+                        echo base_url() . "/images/category/land_icon.png";
+                        break;
+                    case "Wildlife Protection":
+                        echo base_url() . "/images/category/wildlife_icon.png";
+                        break;
 
-    <script>
-        function add_up(id){
-            window.location.replace("<?php echo base_url();?>posts/add_up/"+id);
-        }
-
-        function add_down(id){
-            window.location.replace("<?php echo base_url();?>posts/add_down/"+id);
-        }
-
-        function filter(filt){
-            window.location.replace("<?php echo base_url();?>posts/filter_by_category/"+filt);
-        }
-    </script>
+                }
+            ?>' height="60%" />
+            <br>
+            <span class="btn input-sm btn-success glyphicon glyphicon-arrow-up "
+                onclick="add_up(<?php echo $row["id"];?>)"> </span>
+                 <?php echo $row['ups'];?>
+            <span class="btn input-sm btn-danger glyphicon glyphicon-arrow-down"
+                onclick="add_down(<?php echo $row["id"];?>)"> </span>
+                <?php echo $row['downs'];?>
+        </div>
+    </div>
+<?php endforeach; ?>
 
 </div>

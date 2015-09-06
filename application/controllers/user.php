@@ -14,13 +14,6 @@ class User extends MY_Controller{
 
     }
 
-    function view_badges($uid){
-        $badges = $this->model->get_badges($uid);
-        foreach ($badges as $key => $value) {
-            $this->load->view('users/viewbadge', $value);
-        }
-    }
-
     function view_profile($uid){
         $name = $this->model->get_value("name", "users", array("id" => $uid));
 
@@ -29,7 +22,7 @@ class User extends MY_Controller{
         );
 
         $this->load->view('viewprofile', $data);
-        $this->view_badges($uid);
+        $this->view_badge($uid);
     }
 
     function add_score($user_id, $category_id){
