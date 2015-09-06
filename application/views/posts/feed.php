@@ -34,7 +34,7 @@
                     case "Air Pollution":
                         echo base_url() . "/images/category/air_icon.png";
                         break;
-                    case "Waste Management":
+                    case "Land Pollution":
                         echo base_url() . "/images/category/land_icon.png";
                         break;
                     case "Wildlife Protection":
@@ -44,28 +44,47 @@
                 }
             ?>' height="60%" />
             <br>
-            <span class="btn input-sm btn-success glyphicon glyphicon-arrow-up "
-                onclick="add_up(<?php echo $row["id"];?>)"> </span>
-                 <?php echo $row['ups'];?>
-            <span class="btn input-sm btn-danger glyphicon glyphicon-arrow-down"
-                onclick="add_down(<?php echo $row["id"];?>)"> </span>
-                <?php echo $row['downs'];?>
+            <div style="display:block; margin: -14px 0 0 22px">
+                <span class="btn input-sm btn-success glyphicon glyphicon-arrow-up "
+                    onclick="add_up(<?php echo $row["id"];?>)"> </span>
+                     <?php echo $row['ups'];?>
+                <span class="btn input-sm btn-danger glyphicon glyphicon-arrow-down"
+                    onclick="add_down(<?php echo $row["id"];?>)"> </span>
+                    <?php echo $row['downs'];?>
+            </div>
         </div>
     </div>
+        
 <?php endforeach; ?>
 
+</div>
+
+<div class="profile">
+    <h4>John Smith</h4>
+    <hr>
+    <h3 align="center">Badges</h3>
+    <?php foreach($badges as $row):?>
+        <div >
+            <img class="profile-badge" src="<?php echo base_url();?>/Images/<?php echo $row['filename'];?>" alt="badge">
+        </div>
+    <?php endforeach;?>
+    <input type="button" value="View All Badges" onclick="showLargeModal('user/view_all_badges')" class="btn btn-success profile-btn">
+    <input type="button" value="View Coupons" onclick="all_coupons()" class="btn btn-success profile-btn">
+</div>
+
+
 <script>
-        function add_up(id){
-            window.location.replace("<?php echo base_url();?>posts/add_up/"+id);
-        }
+    function add_up(id){
+        window.location.replace("<?php echo base_url();?>posts/add_up/"+id);
+    }
 
-        function add_down(id){
-            window.location.replace("<?php echo base_url();?>posts/add_down/"+id);
-        }
+    function add_down(id){
+        window.location.replace("<?php echo base_url();?>posts/add_down/"+id);
+    }
 
-        function filter(filt){
-            window.location.replace("<?php echo base_url();?>posts/filter_by_category/"+filt);
-        }
+    function filter(filt){
+        window.location.replace("<?php echo base_url();?>posts/filter_by_category/"+filt);
+    }
+
 </script>
 
-</div>

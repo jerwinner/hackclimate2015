@@ -29,7 +29,7 @@ body {
     float: left;
     margin: 80px 0 0 30px;
     padding: 10px;
-    width: 30%;
+    width: 300px;
 }
 .img-filter {
     height: 135px;
@@ -41,8 +41,7 @@ body {
     margin: 10px 0 0;
 }
 .feeds {
-    background-color: grey;
-    width: 60%;
+    width: 600px;
     float: left;
     margin: 80px 0 0 30px;
     padding: 12px;
@@ -50,6 +49,7 @@ body {
     background-color: #d2ff69;
     border: 1px solid #c1e058;
 }
+<<<<<<< HEAD
 
 .coupon{
 	background-color: #fff;
@@ -60,6 +60,53 @@ body {
 	border-radius: 4px;
 	text-align: center;
 	vertical-align: middle;
-	font: Helvetica;
+}
 
+.post{
+    border-bottom: 1px solid black;
+    clear: both;
+}
+.post-desc{
+    float: left;
+    padding: 5px;
+    width: 74%;
+}
+
+.post-btns{
+    float: left;
+    width: 25%;
+    margin: 10px 0 0 0;
+}
+
+.profile {
+    float: left;
+    margin: 80px 0 0 30px;
+    border-radius: 7px;
+    background-color: #d2ff69;
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #c1e058;
+}
+
+.post-btns img{
+    display: block;
+    margin: 0 auto;
+    height: 75px;
+}
+
+.profile-badge{
+    display: block;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.profile-btn {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.badge-div {
+    width: 30%;
+    display: inline-block;
+    margin: 0px 0 0 26px;
 }
