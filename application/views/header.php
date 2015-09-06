@@ -11,6 +11,7 @@
     <body>
         <div class="header">
             <a href="<?php echo base_url();?>/posts"><img src="<?php echo base_url();?>/images/white-logo.png" alt="logo" class="logo"></a>
+            <input type="button" onclick="logOut()" value="Log Out" class="btn btn-danger add-post">
             <input type="button" onclick="showDefaultModal('posts/load_view_add')" value="Add Post" class="btn btn-success add-post">
         </div>
 
@@ -86,6 +87,10 @@
                         $("#modal_lg_contents").html(msg);
                     }
                 });
+            }
+
+            function logOut(){
+                window.location.replace("<?php echo base_url();?>");
             }
 
         </script>

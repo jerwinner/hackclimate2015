@@ -42,7 +42,7 @@
                         break;
 
                 }
-            ?>' height="60%" />
+            ?>' alt="<?php echo $row["description"] ?>"  height="60%" />
             <br>
             <div style="display:block; margin: -14px 0 0 22px">
                 <span class="btn input-sm btn-success glyphicon glyphicon-arrow-up "

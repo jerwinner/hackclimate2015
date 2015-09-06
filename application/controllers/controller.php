@@ -7,7 +7,7 @@ class Controller extends MY_Controller {
     }
 
 	public function index(){
-        $this->load->view("page_home.php");
+        $this->load->view("home.php");
     }
 
     function page_builder($data, $content){
